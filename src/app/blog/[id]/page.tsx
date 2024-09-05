@@ -14,7 +14,7 @@ async function fetchBlog(id: number) {
 
   try {
     const res = await fetch(
-      `http://127.0.0.1:1337/api/blogs/${id}?populate=*`,
+      `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/blogs/${id}?populate=*`,
       options
     );
     const response = await res.json();
@@ -28,7 +28,8 @@ const BlogPage = async ({ params }: any) => {
   const blog = await fetchBlog(params.id);
 
   const imageUrl =
-    "http://127.0.0.1:1337" + blog.data.attributes.img.data.attributes.url;
+    process.env.NEXT_PUBLIC_STRAPI_API_URL +
+    blog.data.attributes.img.data.attributes.url;
 
   return (
     <div className="blog-container">

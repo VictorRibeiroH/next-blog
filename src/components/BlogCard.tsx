@@ -7,7 +7,8 @@ import "../styles/_BlogCard.scss";
 
 const BlogCard = ({ blog }: any) => {
   const imageUrl =
-    "http://127.0.0.1:1337" + blog.attributes.img.data.attributes.url;
+  process.env.NEXT_PUBLIC_STRAPI_API_URL +
+  blog.attributes.img.data.attributes.url;
 
   return (
     <div className="blog-card">

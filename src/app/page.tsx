@@ -9,7 +9,10 @@ async function fetchCategories() {
   };
 
   try {
-    const res = await fetch("http://127.0.0.1:1337/api/categories", options);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/categories`,
+      options
+    );
     const response = await res.json();
     return response;
   } catch (err) {
@@ -26,7 +29,7 @@ async function fetchBlogs() {
 
   try {
     const res = await fetch(
-      "http://127.0.0.1:1337/api/blogs?populate=*",
+      `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/blogs?populate=*`,
       options
     );
     const response = await res.json();
