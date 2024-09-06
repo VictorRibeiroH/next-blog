@@ -11,11 +11,12 @@ import "../styles/_BlogCard.scss";
 const Blogs = ({ blogs }: any) => {
   const { category } = useContext(CategoryContext);
 
-  const filteredBlogs = blogs.data.filter((blog: any) => {
-    return blog.attributes.categories.data.some(
+  const filteredBlogs = blogs?.data?.filter((blog: any) => {
+    return blog.attributes?.categories?.data?.some(
       (cat: any) => cat.attributes.Title === category
     );
   });
+
   return (
     <div className="blogs-grid">
       {filteredBlogs?.map((blog: any) => (

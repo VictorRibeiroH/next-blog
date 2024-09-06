@@ -7,25 +7,28 @@ import "../styles/_BlogCard.scss";
 
 const BlogCard = ({ blog }: any) => {
   const imageUrl =
-  process.env.NEXT_PUBLIC_STRAPI_API_URL +
-  blog.attributes.img.data.attributes.url;
+    blog.attributes.img && blog.attributes.img.data
+      ? blog.attributes.img.data.attributes.url
+      : null;
 
   return (
     <div className="blog-card">
       <Link href={`/blog/${blog.id}`}>
         <div className="image-container">
-          <Image
-            fill
-            objectFit="cover"
-            src={imageUrl}
-            alt={""}
-            className="rounded-t-lg"
-          />
+          {imageUrl ? (
+            <Image
+              fill
+              objectFit="cover"
+              src={imageUrl}
+              alt={blog.attributes.Title}
+              className="rounded-t-lg"
+            />
+          ) : (
+            <p>Imagem não disponível</p>
+          )}
         </div>
         <div>
-          <h2>
-            {blog.attributes.Title}
-          </h2>
+          <h2>{blog.attributes.Title}</h2>
           <p>{blog.attributes.Description}</p>
         </div>
       </Link>

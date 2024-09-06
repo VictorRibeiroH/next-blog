@@ -10,7 +10,7 @@ async function fetchCategories() {
 
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/categories`,
+      `${process.env.API_URL}/api/categories`,
       options
     );
     const response = await res.json();
@@ -29,7 +29,7 @@ async function fetchBlogs() {
 
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/blogs?populate=*`,
+      `${process.env.API_URL}/api/blogs?populate=*`,
       options
     );
     const response = await res.json();
